@@ -22,11 +22,6 @@
 ---
 
 ## Структура проекта
-web-project/
-├── index.html
-├── styles/
-│ └── main.css
-└── README.md
 
 - `index.html` — главная страница.
 - `styles/main.css` — внешний файл стилей.

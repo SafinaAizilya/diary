@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мой дневник - личные записи</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+  <header class="header">
+    <h1>Мой дневник</h1>
+    <nav class="nav">
+      <a href="#records">Записи</a>
+      <a href="#search">Поиск</a>
+      <a href="#about">О проекте</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2>Личные записи и воспоминания</h2>
+      <p>Здесь я сохраняю свои мысли, события и фотографии. Каждая запись — маленькая история.</p>
+    </section>
+
+    <section id="records">
+      <h2>Мои записи</h2>
+
+      <div class="cards">
+        <article class="card">
+          <img src="assets/images/post-1.jpg" alt="Осенний парк с желтыми листьями">
+          <h3>Прогулка в осеннем парке</h3>
+          <p>Гуляла по парку, собирала листья и пила кофе.</p>
+          <p class="meta">12.09.2026 · радость</p>
+          <p class="tags">#осень #прогулка</p>
+        </article>
+
+        <article class="card">
+          <img src="assets/images/post-2.jpg" alt="Книга и чашка чая на пледе">
+          <h3>Уютный вечер с книгой</h3>
+          <p>Читала роман под пледом, пила чай с мёдом.</p>
+          <p class="meta">10.09.2026 · спокойствие</p>
+          <p class="tags">#книги #уют</p>
+        </article>
+
+        <article class="card">
+          <img src="assets/images/post-3.jpg" alt="Подруги в кафе за столиком">
+          <h3>Встреча с подругами</h3>
+          <p>Посидели в новом кафе, много смеялись.</p>
+          <p class="meta">08.09.2026 · радость</p>
+          <p class="tags">#друзья #кафе</p>
+        </article>
+
+        <article class="card">
+          <img src="assets/images/post-4.jpg" alt="Дождь за окном">
+          <h3>Дождливый день дома</h3>
+          <p>Смотрела фильм, грустила, но было тепло.</p>
+          <p class="meta">05.09.2026 · грусть</p>
+          <p class="tags">#дождь #дом</p>
+        </article>
+
+        <article class="card">
+          <img src="assets/images/post-5.jpg" alt="Тарелка пасты с томатами">
+          <h3>Новый рецепт: паста</h3>
+          <p>Приготовила пасту с томатами, получилось вкусно!</p>
+          <p class="meta">03.09.2026 · вдохновение</p>
+          <p class="tags">#еда #готовка</p>
+        </article>
+
+        <article class="card">
+          <img src="assets/images/post-6.jpg" alt="Коврик для йоги у окна">
+          <h3>Утренняя йога</h3>
+          <p>Начала утро с йоги, чувствую себя прекрасно.</p>
+          <p class="meta">01.09.2026 · энергия</p>
+          <p class="tags">#спорт #утро</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="search">
+      <h2>Поиск записей</h2>
+      <form class="search-form">
+        <div class="field">
+          <label for="query">Название</label>
+          <input type="text" id="query" name="query" placeholder="Например, прогулка">
+        </div>
+
+        <div class="field">
+          <label for="mood">Настроение</label>
+          <select id="mood" name="mood">
+            <option value="">Любое</option>
+            <option value="joy">Радость</option>
+            <option value="calm">Спокойствие</option>
+            <option value="sad">Грусть</option>
+            <option value="inspire">Вдохновение</option>
+            <option value="energy">Энергия</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="date">С даты</label>
+          <input type="date" id="date" name="date">
+        </div>
+
+        <button type="submit">Найти</button>
+      </form>
+    </section>
+
+    <section id="about">
+      <h2>О проекте</h2>
+      <p>Это личный дневник, где можно сохранять записи и фотографии. Проект создаётся в рамках курса веб-программирования.</p>
+      <p>Позже здесь появится возможность добавлять свои записи, редактировать их и искать по тегам.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Мой дневник · 2026</p>
+    <p>Учебный проект по веб-программированию</p>
+  </footer>
+
+</body>
+</html> 

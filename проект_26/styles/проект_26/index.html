@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мой дневник — личные записи</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <h1>Мой дневник</h1>
+    <nav class="nav">
+      <a href="#records">Записи</a>
+      <a href="#about">О проекте</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2>Личные записи и воспоминания</h2>
+      <p>Здесь я сохраняю свои мысли, события и фотографии.</p>
+    </section>
+
+    <section id="records">
+      <div class="toolbar">
+        <h2>Мои записи</h2>
+        <button type="button" id="addBtn" class="btn-add">Добавить запись</button>
+      </div>
+
+      <form class="filters" id="filters">
+        <div class="filter-field">
+          <label for="searchInput">Поиск по названию</label>
+          <input type="text" id="searchInput" name="search" placeholder="Например, прогулка">
+        </div>
+
+        <div class="filter-field">
+          <label for="moodFilter">Настроение</label>
+          <select id="moodFilter" name="mood">
+            <option value="all">Все настроения</option>
+            <option value="радость">Радость</option>
+            <option value="спокойствие">Спокойствие</option>
+            <option value="грусть">Грусть</option>
+            <option value="вдохновение">Вдохновение</option>
+            <option value="энергия">Энергия</option>
+          </select>
+        </div>
+
+        <div class="filter-field">
+          <label for="sortSelect">Сортировка</label>
+          <select id="sortSelect" name="sort">
+            <option value="date-desc">Сначала новые</option>
+            <option value="date-asc">Сначала старые</option>
+            <option value="title-asc">По алфавиту (А–Я)</option>
+            <option value="title-desc">По алфавиту (Я–А)</option>
+          </select>
+        </div>
+      </form>
+
+      <p class="empty" id="emptyMessage" hidden>Ничего не найдено. Попробуйте изменить фильтры.</p>
+
+      <div class="cards" id="cardsContainer"></div>
+    </section>
+
+    <section id="about">
+      <h2>О проекте</h2>
+      <p>Это личный дневник, где можно сохранять записи и фотографии.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Мой дневник · 2026</p>
+    <p>Учебный проект по веб-программированию</p>
+  </footer>
+
+  <div class="modal" id="viewModal" hidden>
+    <div class="modal-backdrop" data-view-close></div>
+    <div class="modal-window modal-window--diary" role="dialog" aria-modal="true">
+      <div class="diary-page">
+        <div class="diary-header">
+          <p class="diary-date" id="viewDate">—</p>
+          <button type="button" class="modal-close" data-view-close aria-label="Закрыть">×</button>
+        </div>
+
+        <h2 class="diary-title" id="viewTitle">—</h2>
+        <p class="diary-mood" id="viewMood">—</p>
+        <p class="diary-text" id="viewText">—</p>
+        <p class="diary-tags" id="viewTags"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-window modal-window--diary" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="diary-page">
+        <div class="diary-header">
+          <p class="diary-date" id="diaryDate">—</p>
+          <button type="button" class="modal-close" data-close aria-label="Закрыть">×</button>
+        </div>
+
+        <h2 id="modalTitle" class="diary-title">Новая запись</h2>
+
+        <form id="addForm" class="diary-form" novalidate>
+          <div class="diary-field">
+            <label for="titleInput">Заголовок</label>
+            <input type="text" id="titleInput" name="title" required minlength="3" maxlength="60" placeholder="О чём эта запись?">
+            <p class="error" data-error-for="titleInput"></p>
+          </div>
+
+          <div class="diary-field">
+            <label for="descInput">Запись</label>
+            <textarea id="descInput" name="description" required minlength="5" maxlength="500" placeholder="Расскажи, как прошёл день..."></textarea>
+            <p class="error" data-error-for="descInput"></p>
+          </div>
+
+          <div class="diary-row">
+            <div class="diary-field">
+              <label for="dateInput">Дата</label>
+              <input type="date" id="dateInput" name="date" required>
+              <p class="error" data-error-for="dateInput"></p>
+            </div>
+
+            <div class="diary-field">
+              <label for="moodInput">Настроение</label>
+              <select id="moodInput" name="mood" required>
+                <option value="">Выбери</option>
+                <option value="радость">Радость</option>
+                <option value="спокойствие">Спокойствие</option>
+                <option value="грусть">Грусть</option>
+                <option value="вдохновение">Вдохновение</option>
+                <option value="энергия">Энергия</option>
+              </select>
+              <p class="error" data-error-for="moodInput"></p>
+            </div>
+          </div>
+
+          <div class="diary-field">
+            <label for="tagsInput">Теги</label>
+            <input type="text" id="tagsInput" name="tags" placeholder="#осень, #прогулка">
+          </div>
+
+          <div class="diary-actions">
+            <button type="button" class="btn-cancel" data-close>Отмена</button>
+            <button type="submit" class="btn-save">Сохранить запись</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="confirmModal" hidden>
+    <div class="modal-backdrop" data-confirm-close></div>
+    <div class="modal-window modal-window--small" role="dialog" aria-modal="true">
+      <h2>Удалить запись?</h2>
+      <p id="confirmText">Это действие нельзя отменить.</p>
+      <div class="modal-actions">
+        <button type="button" class="btn-cancel" data-confirm-close>Отмена</button>
+        <button type="button" class="btn-save" id="confirmDeleteBtn">Удалить</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
